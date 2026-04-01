@@ -7,12 +7,16 @@ const db = mysql.createPool({
     host:"localhost",
     user:"root",
     password:"senacrs",
-    database:"mysql -u root -p",
-
+    database:"database",
 })
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
+})
+
+app.get('/pilotos', (req, res) => {
+    const dados = db.query("SELECT * FROM piloto")
+    console.log(dados);
 })
 
 app.listen(port, () => {
